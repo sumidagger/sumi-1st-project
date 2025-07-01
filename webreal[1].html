@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>car website</title>
+    <!-- Box Icons -->
+    <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <!-- Link To CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+<style>
+
+    /* Google Fonts */
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      scroll-padding-top: 2rem;
+      list-style: none;
+      text-decoration: none;
+    }
+    *::selection {
+      background: var(--main-color);
+      color: #fff;
+    }
+    :root {
+      --main-color: #ffb411;
+      --text-color: #1e1c2a;
+      --bg-color: #fff;
+  
+      --big-font: 4rem;
+      --h2-font: 2.24rem;
+      --p-font: 0.9rem;
+    }
+    section {
+      padding: 50px 10%;
+    }
+    body.active {
+      --bg-color: #1e1c2a;
+      --text-color: #fff;
+    }
+    body {
+      color: var(--text-color);
+      background: var(--bg-color);
+    }
+    #darkmode {
+      font-size: 25px;
+      cursor: pointer;
+    }
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-color);
+      padding: 18px 100px;
+      box-shadow: 0 0.5rem 50rem rgba(0, 0, 0, 0.1);
+    }
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--main-color);
+    }
+    .navbar {
+      display: flex;
+    }
+    .navbar a {
+      font-size: 1rem;
+      padding: 10px 20px;
+      color: var(--text-color);
+      font-weight: 500;
+    }
+    .navbar a:hover {
+      color: var(--main-color);
+    }
+    #menu-icon {
+      font-size: 2rem;
+      cursor: pointer;
+      display: none;
+    }
+    .home {
+      width: 100%;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .home-img img {
+      width: 100%;
+    }
+    .home-text h1 {
+      font-size: var(--big-font);
+      color: var(--main-color);
+    }
+    .home-text h2 {
+      font-size: var(--h2-font);
+      margin: 1rem 0 1rem;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--main-color);
+      padding: 10px 20px;
+      border-radius: 0.5rem;
+      color: #fff;
+    }
+    .btn:hover {
+      background: #ffa400;
+    }
+    .about {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .about-img img {
+      max-width: 80%;
+      border-radius: 0.5rem;
+    }
+    .about-text span {
+      color: var(--main-color);
+      font-weight: 500;
+    }
+    .about-text h2 {
+      font-size: var(--h2-font);
+    }
+    .about-text p {
+      margin: 0.8rem 0 1.8rem;
+    }
+    .heading {
+      text-align: center;
+      font-size: small;
+    }
+    .heading span {
+      color: var(--main-color);
+      font-weight: 500;
+    }
+    .heading h2 {
+      font-size: var(--h2-font);
+    }
+    .menu-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, auto));
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .box {
+      position: relative;
+      margin-top: 2rem;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgb(4 64 54 / 10%);
+      padding: 10px;
+    }
+    .box-img {
+      width: 200px;
+      height: 200px;
+    }
+    .box-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+    .box h2 {
+      font-size: 1.2rem;
+    }
+    .box h3 {
+      font-size: 1rem;
+      font-weight: 400;
+      margin: 4px 0 10px;
+    }
+    .box span {
+      font-size: var(--p-font);
+      font-weight: 500;
+    }
+    .box .bx {
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 20px;
+      background: var(--main-color);
+      border-radius: 0 0.5rem 0 0.5rem;
+      padding: 5px 8px;
+    }
+    .box .bx:hover {
+      background: #ffa400;
+    }
+    .servives-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, auto));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .s-box {
+      text-align: center;
+    }
+    .s-box img {
+      width: 60px;
+    }
+    .s-box h3 {
+      margin: 4px 0 10px;
+    }
+    .connect {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .connect-text span {
+      color: var(--main-color);
+      font-weight: 500;
+    }
+    .connect-text h2 {
+      font-size: var(--h2-font);
+    }
+    .contact {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+      gap: 1.5rem;
+    }
+    .contact-box h3 {
+      margin-bottom: 1rem;
+    }
+    .social {
+      display: flex;
+      margin-top: 1.5rem;
+    }
+    .social i {
+      font-size: 20px;
+      margin-right: 1rem;
+      color: var(--text-color);
+    }
+    .social i:hover {
+      color: var(--main-color);
+    }
+    .contact-box li a {
+      color: var(--text-color);
+    }
+    .contact-box li a:hover {
+      color: var(--main-color);
+    }
+    .address {
+      display: flex;
+      flex-direction: column;
+    }
+    .address i {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+    .address span {
+      margin-left: 1rem;
+    }
+    .copyright {
+      padding: 20px;
+      text-align: center;
+    }
+    @media (max-width: 921px) {
+      header {
+        padding: 14px 41px;
+      }
+      :root {
+        --big-font: 3rem;
+        --h2-font: 1.7rem;
+      }
+    }
+    @media (max-width: 768px) {
+      section {
+        padding: 50px 8%;
+      }
+      #menu-icon {
+        display: initial;
+        color: var(--text-color);
+      }
+      header .navbar {
+        position: absolute;
+        top: -400px;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background: var(--bg-color);
+        box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
+        transition: 0.2s ease;
+      }
+      .navbar.active {
+        top: 100%;
+      }
+      .navbar a {
+        padding: 1.5rem;
+        display: block;
+        background: var(--bg-color);
+      }
+      #darkmode {
+        position: absolute;
+        top: 1.4rem;
+        right: 2rem;
+      }
+    }
+    @media (max-width: 715px) {
+      header {
+        padding: 10px 16px;
+      }
+      .home {
+        grid-template-columns: 1fr;
+      }
+      .about {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .about-img {
+        order: 2;
+      }
+    }
+    @media (max-width: 515px) {
+      .connect {
+        flex-direction: column;
+      }
+      .connect .btn {
+        margin-top: 1rem;
+      }
+    }
+    @media (max-width: 450px) {
+      :root {
+        --big-font: 2rem;
+        --h2-font: 1.4rem;
+      }
+      .home-text {
+        padding-top: 4rem;
+      }
+    }
+</style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <a href="#" class="logo"> نقدم لكم أفضل السيارات الألمانية و حصراً أحدث الأنواع</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About the hajea</a></li>
+            <li><a href="#menu">cars</a></li>
+            <li><a href="#services">Service</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <!-- Dark Mode -->
+            <div class="bx bx-moon" id="darkmode"></div>
+        </ul>
+    </header>
+    <!-- Home  Section-->
+    <section class="home" id="home">
+        <div class="home-text">
+            <h1>مَعارض الحَجية</h1>
+            <h2>The best iraqi cars dealer<br> for sure</h2>
+            <a href="https://youtu.be/-8UPg6hyDBg?si=rA-yYqwFtMLqbNb0" class="btn">View cars</a>
+        </div>
+        <div class="home-img">
+            <img src="Screenshot 2024-11-24 042409.png" alt="">
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="about-img">
+            
+            <img src="photo_5294116787044082105_y.jpg" alt="">
+            <img src="photo_5294116787044082098_y.jpg" alt="">
+            <img src="sample_0.jpg" alt="">
+        </div>
+        <div class="about-text">
+            <span>About Us</span>
+            <h2>We sell and buy<br>only german trucks</h2>
+            <h3>
+                <br>الحجية قصة نجاح عراقية ملهمة
+                الحياة مليئة بالتحديات، ولكن القليل هم من يستطيعون تحويلها إلى فرصة لصنع النجاح.<br> من بين هؤلاء القليلين تأتي شخصية الحجية، المرأة العراقية الفريدة التي أصبحت رمزاً للإصرار والعزيمة في بغداد، 
+                
+                
+              حيث تسطر قصة نجاحها المذهلة في مجال تجارة السيارات.
+               
+                <br><br>
+                البداية المتواضعة: من محل فلافل بسيط إلى أولى خطوات النجاح
+                
+                ولدت الحجية في إحدى أحياء بغداد البسيطة في منطقة البياع ، وبدأت حياتها المهنية في محل صغير لبيع الفلافل مقابل مستشفى اليرموك. على الرغم من تواضع الإمكانيات، استطاعت الحجية أن تجذب الناس بمهارتها وحسن تعاملها مع الزبائن مما جعلها معروفة ليس فقط بين أهالي المنطقة، بل أيضاً بين زوار المستشفى.
+                ثم افتحت أسواق للمواد الغذائية 
+                
+                لكن طموحها كان أكبر بكثير من محل صغير. كانت ترى ما وراء حدود هذا المكان، وتحلم بأن تكون جزءاً من عالم أكبر وأكثر تأثيراً. هكذا بدأت الحجية رحلتها نحو تجارة السيارات.
+                
+                
+                <br><br>
+                التحديات والمصاعب: العنصرية ومحاربة النجاح
+                
+                حين قررت الحجية دخول مجال تجارة السيارات، لم يكن الطريق سهلاً. في مجتمع يندر فيه أن تقود النساء مجالاً تجارياً يسيطر عليه الرجال، واجهت الحجية الكثير من التحديات. تعرضت للعنصرية والتشكيك بقدراتها، بل وحاول العديد من المنافسين عرقلة مسيرتها بطرق مباشرة وغير مباشرة.
+                
+                لكن الحجية كانت تمتلك ما هو أكثر من مجرد الطموح. كانت تمتلك رؤية واضحة وإيماناً بقدرتها على النجاح. لم تتراجع أمام محاولات الإحباط، بل اعتبرت كل مشكلة فرصة لتثبت نفسها أكثر وأكثر.
+                
+                <br><br>
+                السيطرة على السوق: من طموح إلى واقع
+                
+                بفضل مثابرتها وإبداعها، استطاعت الحجية أن تتحول من صاحبة محل فلافل بسيط وأسواق للمواد الغذائية إلى سيدة أعمال تمتلك أكبر معارض للسيارات في بغداد. أصبحت اسم “الحجية” علامة تجارية معروفة في عالم السيارات، حيث يقصدها الجميع للحصول على أفضل العروض وأجود الأنواع.
+                
+                كانت معارضها مثالاً للأناقة والاحترافية، تجمع بين السيارات الحديثة والخدمة المميزة، مما جعلها الوجهة الأولى للراغبين في شراء السيارات في بغداد.
+                
+                درس من قصة الحجية
+                
+                قصة الحجية ليست مجرد قصة نجاح شخصية، بل هي درس لنا جميعاً. تعلمنا أن الإصرار والعمل الجاد يمكن أن يتغلبا على أي عائق، وأن التحديات مهما كانت صعبة، يمكن أن تصبح سلماً للنجاح.
+                
+                الحجية ليست فقط سيدة أعمال ناجحة، بل رمز للمرأة العراقية القوية التي تستطيع تغيير واقعها، بل وواقع من حولها.
+                
+                الخاتمة
+                
+                الحجية ليست مجرد اسم في عالم تجارة السيارات، بل هي قصة تُروى عن قوة الحلم والعزيمة. إنها مثال حي على أن النجاح لا يُقاس بحجم البداية، بل بحجم الإصرار الذي نضعه في رحلتنا.
+                
+                في النهاية، تبقى الحجية مصدر إلهام لكل من يواجه التحديات ويطمح لتغيير مسار حياته.</h3>
+        <section>
+            <a href="https://youtu.be/9rx7-ec0p0A?si=COJXPBHBicT0oOM0" class="btn">Learn More</a>
+        </div>
+    </section>
+    <!-- Menu -->
+    <section class="menu" id="menu">
+        <div class="heading">
+            <span>our beauties</span>
+            <h2>2024 BMW Models</h2>
+            <h3>BMW 3 series</h3>
+        </div>
+        <div class="menu-container">
+            <!-- Box 1 -->
+            <div class="box">
+                <div class="box-img">
+                   <a href="landingpage.html">more vission</a>
+                    <img src="Screenshot 2024-11-24 124527.png" alt="">
+                </div>
+                <h2>BMW 330i</h2>
+                <h3>Engine: 2.0-liter turbocharged inline-four<br>
+                    Power: 255 horsepower and 295 lb-ft of torque<br>
+                    Transmission: 8-speed automatic<br>
+                    Drive Type: Rear-wheel drive<br>
+                    0-60 mph: Approximately 5.6 seconds<br>
+                    </h3>
+                <span>$45,000</span>
+                <i class='bx bx-cart-alt'></i>
+            </div>
+            <!-- Box 2 -->
+            <div class="box">
+                <div class="box-img">
+                  <a href="landingpage.html">more vission</a>
+                    <img src="Screenshot 2024-11-24 124927.png" alt="">
+                </div>
+                <h2>BMW M340i</h2>
+                <h3>
+                    Engine: 3.0-liter inline-six turbocharged engine with 48V mild-hybrid technology.<br>
+                    
+                    Power: 382 horsepower and 369 lb-ft of torque.<br>
+                    
+                    Transmission: 8-speed automatic transmission.<br>
+                    Drive types:<br>1. Rear-Wheel Drive(RWD)
+                    <br>2.All-Wheel Drive(AWD)
+                    0-60 mph: approximately 4.1 seconds
+                    </h3>
+                <span>$58,000</span>
+                <i class='bx bx-cart-alt'></i>
+            </div>
+
+            <br><br><br><br>
+            <div class="heading">
+                <h3>BMW 5 series</h3>
+            </div>
+            <br><br><br><br><br><br><br><hr>
+            <!-- Box 3 -->
+            <div class="box">
+                <div class="box-img">
+                  <a href="landingpage.html">more vission</a>
+                    <img src="Screenshot 2024-11-24 154321.png" alt="">
+                </div>
+                <h2>BMW 530i</h2>
+                <h3>Engine: 2.0-liter turbocharged inline-four with mild-hybrid technology.<br>
+                    Power: 255 horsepower and 295 lb-ft of torque.<br>
+                    Transmission: 8-speed automatic.<br>
+                    Drive Type: Rear-wheel drive (RWD) is standard. All-wheel drive (AWD) is available as the 530i xDrive5.<br>
+                    0-60 mph: Approximately 5.9 seconds for the RWD and 5.8 seconds for the AWD6</h3>
+                <span>$56,000</span>
+                <i class='bx bx-cart-alt'></i>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <div class="box">
+        <div class="box-img">
+          <a href="landingpage.html">more vission</a>
+            <img src="Screenshot 2024-11-24 125102.png" alt="">
+        </div>
+        <h2>BMW i5</h2>
+        <h3>Engine: Electric motor.<br>
+            Power: 335 horsepower for the eDrive40, and up<br> to 593 horsepower for the M602.<br>
+            Transmission: 1-speed direct drive.<br>
+            Drive Type: Rear-wheel drive (RWD) for the<br> eDrive40, and all-wheel drive (AWD) for the M602.<br>
+            0-60 mph: Approximately 5.7 seconds for the<br> eDrive40, and 3.7 seconds for the M602.<br>
+            </h3>
+        <span>$65,000 the eDrive</span>
+        <span>82,000 the M60</span>
+        <i class='bx bx-cart-alt'></i>
+    </div>
+
+
+
+    <div class="heading">
+        <h3>BMW 7 series</h3>
+    </div>
+
+    <div class="box">
+        <div class="box-img">
+          <a href="landingpage.html">more vission</a>
+            <img src="Screenshot 2024-11-24 125316.png" alt="">
+        </div>
+        <h2>BMW 740i</h2>
+        <h3>Engine: 3.0-liter turbocharged inline-six with mild-hybrid technology.<br>
+            Power: 375 horsepower and 398 lb-ft of torque2.<br>
+            Transmission: 8-speed automatic.<br>
+            Drive Type: Rear-wheel drive (RWD) is standard. All-wheel drive (AWD) is available as the 740i xDrive.<br>
+            0-60 mph: Approximately 5.2 seconds<br>
+            </h3>
+        <span>$95,999</span>
+        <i class='bx bx-cart-alt'></i>
+    </div>
+
+
+
+
+
+    <div class="box">
+        <div class="box-img">
+          <a href="landingpage.html">more vission</a>
+            <img src="Screenshot 2024-11-24 125404.png" alt="">
+        </div>
+        <h2>BMW i7</h2>
+        <h3>Engine: 2.0-liter turbocharged inline-four<br>
+            Power: 255 horsepower and 295 lb-ft of torque<br>
+            Transmission: 8-speed automatic<br>
+            Drive Type: Rear-wheel drive<br>
+            0-60 mph: Approximately 5.6 seconds<br>
+            </h3>
+        <span>$103,980 the eDrive model</span>
+        <span>$122,100 the xDrive60 model</span>
+        <span>$167,500 the M7 model</span>
+        <i class='bx bx-cart-alt'></i>
+    </div>
+
+
+    <div class="heading">
+        <h3>BMW x series</h3>
+    </div>
+
+    <div class="box">
+        <div class="box-img">
+          <a href="landingpage.html">more vission</a>
+            <img src="Screenshot 2024-11-24 125603.png" alt="">
+        </div>
+        <h2>BMW X5</h2>
+        <h3>Engine: 3.0-liter turbocharged inline-six with mild-hybrid technology.<br>
+            Power: 375 horsepower and 398 lb-ft of torque.<br>
+            Transmission: 8-speed automatic.<br>
+            Drive Type: All-wheel drive (AWD).<br>
+            0-60 mph: Approximately 5.2 seconds.<br>
+            </h3>
+        <span>$67,000</span>
+        <i class='bx bx-cart-alt'></i>
+    </div>
+
+
+    <div class="box">
+        <div class="box-img">
+          <a href="landingpage.html">more vission</a>
+            <img src="Screenshot 2024-11-24 125708.png" alt="">
+        </div>
+        <h2>BMW ix</h2>
+        <h3>
+            Engine: Electric motor.<br>
+            Power: 516 horsepower for the xDrive50, and up to 610 horsepower for the M60.<br>
+            Transmission: 1-speed direct drive.<Br>
+            Drive Type: All-wheel drive (AWD).<br>
+            0-60 mph: Approximately 4.4 seconds for the xDrive50, and 3.6 seconds for the M60.
+            </h3>
+        <span>$87,000 the xDrive50 mode</span>
+        <span>$111,100 the M60 mode</span>
+        <i class='bx bx-cart-alt'></i>
+    </div>
+
+
+    <div class="heading">
+        <h3>BMW M series</h3>
+    </div>
+
+    <div class="box">
+        <div class="box-img">
+          <a href="landingpage.html">more vission</a>
+            <img src="Screenshot 2024-11-24 125831.png" alt="">
+        </div>
+        <h2>BMW M3</h2>
+        <h3>Engine: 3.0-liter BMW M TwinPower Turbo inline-six.<br>
+            Power: 473 horsepower for the base model, 503 horsepower for the Competition and Competition xDrive models.<br>
+            Transmission: 6-speed manual for the base model, 8-speed automatic for the Competition and Competition xDrive models.<br>
+            Drive Type: Rear-wheel drive (RWD) for the base and Competition models, all-wheel drive (AWD) for the Competition xDrive model.<br>
+            0-60 mph: Approximately 4.1 seconds for the base model, 3.8 seconds for the Competition model, and 3.4 seconds for the Competition xDrive model
+            </h3>
+        <span>$75,000 the base model.</span>
+        <span>$77,700 the competition model.</span>
+        <span>$83,500 the competition xDrive model.</span>
+        <i class='bx bx-cart-alt'></i>
+    </div>
+
+
+    <div class="box">
+        <div class="box-img">
+          <a href="landingpage.html">more vission</a>
+            <img src="Screenshot 2024-11-24 130024.png" alt="">
+        </div>
+        <h2>BMW M4</h2>
+        <h3>Engine: 3.0-liter BMW M TwinPower Turbo inline-six.<br>
+            Power: 473 horsepower for the base model, 503 horsepower for the Competition and Competition xDrive models.<br>
+            Transmission: 6-speed manual for the base model, 8-speed automatic for the Competition and Competition xDrive models.<br>
+            Drive Type: Rear-wheel drive (RWD) for the base and Competition models, all-wheel drive (AWD) for the Competition xDrive model.<br>
+            0-60 mph: Approximately 4.1 seconds for the base model, 3.8 seconds for the Competition model, and 3.4 seconds for the Competition xDrive model
+            </h3>
+        <span>$77,000 the base model.</span>
+        <span>$80,700 the competition model.</span>
+        <span>$84,900 the competition xDrive model.</span>
+        <i class='bx bx-cart-alt'></i>
+    </div>
+
+
+
+    <div class="box">
+        <div class="box-img">
+          <a href="landingpage.html">more vission</a>
+            <img src="Screenshot 2024-11-24 130218.png" alt="">
+        </div>
+        <h2>BMW M8</h2>
+        <h3>Engine: 4.4-liter BMW M TwinPower Turbo V8.
+
+            Power: 617 horsepower and 553 lb-ft of torque2.
+            
+            Transmission
+            Transmission: 8-speed automatic with shiftable manual mode2.
+            Drive Type: All-wheel drive (AWD)2.
+            0-60 mph: Approximately 3.1 seconds
+            </h3>
+        <span>$136,700 the competition model.</span>
+        <span>$145,900 the competition xDrive model.</span>
+        <i class='bx bx-cart-alt'></i>
+    </div>
+
+
+
+    <div class="box">
+        <div class="box-img">
+          <a href="landingpage.html">more vission</a>
+            <img src="Screenshot 2024-11-24 130356.png" alt="">
+        </div>
+        <h2>BMW i4</h2>
+        <h3>Engine: Electric motor.<br>
+            Power: 282 horsepower for the eDrive35, 335 horsepower for the eDrive402, and 396 horsepower for the xDrive40.<br>
+            Transmission: 1-speed direct drive.<br>
+            Drive Type: Rear-wheel drive (RWD) for the eDrive35 and eDrive402, and all-wheel drive (AWD) for the xDrive40.<br>
+            0-60 mph: Approximately 5.5 seconds for the eDrive40, and 4.9 seconds for the xDrive403.
+            </h3>
+        <span>$49,990 the eDrive model.</span>
+        <span>$55,700 the competition model.</span>
+        <span>$60,900 the competition xDrive model.</span>
+        <i class='bx bx-cart-alt'></i>
+    </div>
+
+
+    <div class="box">
+        <div class="box-img">
+          <a href="landingpage.html">more vission</a>
+            <img src="Screenshot 2024-11-24 130518.png" alt="">
+        </div>
+        <h2>BMW ix3</h2>
+        <h3>Engine: Electric motor.<br>
+            Power: 282 horsepower and 295 lb-ft of torque.<br>
+            Transmission: 1-speed direct drive.<br>
+            Drive Type: Rear-wheel drive (RWD).<br>
+            0-60 mph: Approximately 6.8 seconds
+            </h3>
+        <span>$88,100 the M sporte model.</span>
+        <span>$101,000 the M sport pro model.</span>
+        <i class='bx bx-cart-alt'></i>
+    </div>
+
+    <!-- Service -->
+    <section class="services" id="services">
+        <div class="heading">
+            <span>Services</span>
+            <h3>We provide best<br> 1. Vehicle Maintenance and Repair
+                Routine Maintenance:<ol><li>Oil changes</li> <li>tire rotations</li> <li>brake inspections</li> and other regular services.</ol>
+                *Repairs: Handling any necessary repairs, from minor fixes to major overhauls.
+                Certified Technicians: Employing factory-trained and certified technicians to ensure high-quality service.<br>
+                
+                <br><br>2.Financing and Leasing Options
+                Flexible Financing: Offering various financing options to suit different budgets and credit situations.
+                
+                <br>Leasing Programs: Providing attractive leasing options with competitive rates and terms.
+                
+               <br> Trade-In Assistance: Helping customers trade in their old vehicles for new ones.
+                
+                <br><br>3. Extended Warranties and Service Plans
+                Extended Warranties: Offering extended warranty plans to cover repairs beyond the standard warranty period.
+                
+                <br>Service Plans: Providing prepaid maintenance plans to help customers manage the cost of routine services.
+                
+                <br><br>4. Customer Convenience Services
+                Online Scheduling: Allowing customers to schedule service appointments online.
+                
+                <br>Loaner Vehicles: Providing loaner cars or shuttle services while the customer's vehicle is being serviced.
+                
+                <br>Valet Service: Offering pick-up and drop-off services for vehicle maintenance and repairs.
+                
+                <br><br>5. Vehicle Customization and Accessories
+                Customization: Offering options for vehicle customization, such as paint protection, window tinting, and performance upgrades.
+                
+                Accessories: Selling a variety of accessories, from floor mats to roof racks, to enhance the vehicle's functionality and appearance.
+                
+                <br><br>6. Customer Loyalty Programs
+                Rewards Programs: Implementing loyalty programs that offer rewards and discounts for repeat customers.
+                
+                <br>Special Offers: Providing exclusive deals and promotions for loyal customers.
+                
+                <br><br>7. Educational Resources
+                Workshops and Clinics: Hosting workshops and clinics to educate customers about vehicle maintenance and safety.
+                
+                <br>Online Resources: Offering online tutorials, FAQs, and other resources to help customers make informed decisions.
+                
+                <br><br>8. Exceptional Customer Service
+                Personalized Assistance: Providing personalized service to address each customer's unique needs and preferences.
+                
+                <br>Transparent Communication: Ensuring clear and honest communication throughout the sales and service process.
+                
+                <br>Follow-Up: Conducting follow-up calls or emails to ensure customer satisfaction and address any concerns.</h3>
+        </div>
+
+        <div class="servives-container">
+            <!-- Box 1 -->
+            <div class="s-box">
+                <img src="VOITURE.jpg" alt="">
+                <h3>rewards and discounts for repeat customers.</h3>
+                <p>we offer a diccounts for customers who buy car 
+                    <br>up to 50%</p>
+            </div>
+            <!-- Box 2 -->
+            <div class="s-box">
+                <img src="download (1).jpg" alt="">
+                <h3>workshops and clinic</h3>
+                <p>to educate customers about vehicles maintenance and safety</p>
+            </div>
+            <!-- Box 3 -->
+            <div class="s-box">
+                <img src="8c48c5ca-ec8a-4719-92e2-a7f2f1d05f68.jpg" alt="">
+                <h3>Vehicle Customization and Accessories Customization</h3>
+                <p>you can customize your car with accessories or color or any adding you prefer</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect -->
+    <section class="connect">
+        <div class="connect-text">
+            <span>Let's Talk</span>
+            <h2>Connect now</h2>
+        </div>
+        <a href="k5_bs_qr.png" class="btn">Contact Us</a>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="contact-box">
+            <h3>معارض الحجية</h3>
+            <span>Connect With Us</span>
+            <div class="social">
+                <a href="#"><i class='bx bxl-facebook' ></i></a>
+                <a href="#"><i class='bx bxl-twitter' ></i></a>
+                <a href="#"><i class='bx bxl-instagram' ></i></a>
+            </div>
+        </div>
+        <div class="contact-box">
+            <h3> Links</h3>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#services">Service</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </div>
+        <div class="contact-box">
+            <h3>Quick Links</h3>
+            <li><a href="#Contact">Contact</a></li>
+            <li><a href="#Privacy Policy">Privacy Policy</a></li>
+            <li><a href="#Disclaimer">Disclaimer</a></li>
+            <li><a href="#Terms Of Use">Terms Of Use</a></li>
+        </div>
+        <div class="contact-box address">
+            <h3>Contact</h3>
+            <i class='bx bxs-map' ><span></span><i>Iraq-baghdad-al-yermouk</i>
+            <i class='bx bxs-phone' ><span>+946 7764252077</span></i>
+            <i class='bx bxs-envelope' ><span>thecutestcreaturealive@email.com</span></i>
+        </div>
+    </section>
+
+
+
+
+    <!-- Copyright -->
+    <div class="copyright">
+        <p> &copy;2024 جميع الحقوق محفوظة لمعارض الحجية</p>
+    </div>
+
+    <br><br><br><br><br><br><br><br><br>
+
+
+   
+    
+
+    <!-- Scroll Reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <!-- Link To JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
